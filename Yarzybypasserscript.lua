@@ -1,5 +1,5 @@
 --[[
-    YARZY ADMIN & BYPASSER V2 (THE ABSOLUTE ZERO-BUG FIXED EDITION)
+    YARZY ADMIN & BYPASSER V2 (THE UPDATED KEY & VIP EDITION)
     Credits: Font Credit: Must | Contact: yarzyhikehde on Instagram
 --]]
 
@@ -15,6 +15,7 @@ local scriptLocked = false
 local chatSpeed = 0.9
 local currentMode = "Smart"
 local autoFixTags = false
+local vipSystemCode = "YarzyHu" -- VIP Engine Verification Map
 
 ----------------------------------------------------
 -- EXPERT BYPASS FONTS DICTIONARIES (BY MUST)
@@ -27,7 +28,7 @@ local fontStylish = {a="ล", b="lٌɔ", c="ჺ", d="cٌlٌ", e="ㅌ", f="Ŧ", g
 local fontBest = {a="ล", b="ҍ", c="ςׁׅ", d="₫", e="ҿ", f="Ŧ", g="ԍׁׁׅׅ", h="ң", i="เ่", j="ʝ", k="ҟׁׅ", l="l", m="ӎִׄ", n="ภ", o="๏", p="ƿׁׅ", q="ϙ", r="ꞅׁׅ", s="ร", t="ƚ", u="ıɹ", v="√", w="ฬ", x="א", y="ឫ", z="z"}
 
 ----------------------------------------------------
--- 1. FIXED STARTING KEY SYSTEM (HIERARCHY RE-ENGINEERED)
+-- 1. STARTING KEY SYSTEM (KEY CHANGED TO YarzyOnTop)
 ----------------------------------------------------
 local StartKeyFrame = Instance.new("Frame")
 StartKeyFrame.Name = "StartKeyFrame"
@@ -45,7 +46,6 @@ local StartCorner = Instance.new("UICorner")
 StartCorner.CornerRadius = UDim.new(0, 14)
 StartCorner.Parent = StartKeyFrame
 
--- Background configuration set to fallback safely underneath interactions
 local FlowerBG = Instance.new("ImageLabel")
 FlowerBG.Name = "FlowerBG"
 FlowerBG.Size = UDim2.new(1, 0, 1, 0)
@@ -86,7 +86,6 @@ local InCorner = Instance.new("UICorner")
 InCorner.CornerRadius = UDim.new(0, 8)
 InCorner.Parent = KeyInput
 
--- Confirm Button elevated to the absolute top interaction layer
 local ConfirmBtn = Instance.new("TextButton")
 ConfirmBtn.Name = "ConfirmBtn"
 ConfirmBtn.Size = UDim2.new(0, 160, 0, 40)
@@ -246,7 +245,7 @@ VipModeBtn.TextSize = 16
 VipModeBtn.ZIndex = 6
 VipModeBtn.Parent = MainFrame
 
--- Exact string matching assignments for layout branding
+-- Exact Text Labels Configured at Bottom
 local CreditLabel = Instance.new("TextLabel")
 CreditLabel.Size = UDim2.new(1, 0, 0, 20)
 CreditLabel.Position = UDim2.new(0, 0, 1, -45)
@@ -285,9 +284,9 @@ local function SendChat(msg)
     end
 end
 
--- Completely isolated, validated, and structural click connection handler
+-- Key trigger validated for: YarzyOnTop
 ConfirmBtn.MouseButton1Click:Connect(function()
-    if KeyInput.Text == "YaRzYhIkEhdE" then
+    if KeyInput.Text == "YarzyOnTop" then
         StartKeyFrame.Visible = false
         MainFrame.Visible = true
     else
@@ -351,7 +350,11 @@ local function HandleCommand(msg, speaker)
     elseif cmd == "!who" and args[2] == "owner" then
         SendChat("Yarzy Abbu")
     elseif cmd == "!who" and args[2] == "admin" then
-        SendChat("Admin: None")
+        if vipSystemCode == "YarzyHu" then
+            SendChat("Admin Configured: Yarzy")
+        else
+            SendChat("Admin: None")
+        end
     elseif cmd == "!say" then
         table.remove(args, 1)
         SendChat(table.concat(args, " "))
