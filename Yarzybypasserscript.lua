@@ -1,14 +1,12 @@
-    --[[
-    YARZY BYPASSER V2 (Premium Red Edition)
-    Customized with VIP Secret Key System & Instagram Info
+--[[
+    YARZY BYPASSER V2 (Fix Blank Screen Edition)
 --]]
 
 local ScreenGui = Instance.new("ScreenGui")
 local LoadingFrame = Instance.new("Frame")
-local ImageLabel = Instance.new("ImageLabel")
 local Title = Instance.new("TextLabel")
 local Subtitle = Instance.new("TextLabel")
-local InstaText = Instance.new("TextLabel") -- Added for Instagram Info
+local InstaText = Instance.new("TextLabel")
 local BarBackground = Instance.new("Frame")
 local Bar = Instance.new("Frame")
 
@@ -21,7 +19,7 @@ local TextBox = Instance.new("TextBox")
 local SendBtn = Instance.new("TextButton")
 local ToggleMode = Instance.new("TextButton")
 
--- Buttons (MUST V5 Layout Clone)
+-- Buttons 
 local AutoBtn = Instance.new("TextButton")
 local FixTagzBtn = Instance.new("TextButton")
 local SupportBtn = Instance.new("TextButton")
@@ -44,36 +42,29 @@ ScreenGui.Parent = game:GetService("CoreGui")
 ScreenGui.ResetOnSpawn = false
 
 ----------------------------------------------------
--- 1. LOADING INTERFACE (With Flower Background & IG)
+-- 1. LOADING INTERFACE (Safe & Text Guaranteed)
 ----------------------------------------------------
 LoadingFrame.Name = "LoadingFrame"
 LoadingFrame.Size = UDim2.new(0, 420, 0, 270)
 LoadingFrame.Position = UDim2.new(0.5, -210, 0.5, -135)
-LoadingFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+LoadingFrame.BackgroundColor3 = Color3.fromRGB(25, 10, 10) -- Semi-dark red safe background
 LoadingFrame.BorderSizePixel = 0
+LoadingFrame.ZIndex = 2
 LoadingFrame.Parent = ScreenGui
 
 local LoadingCorner = Instance.new("UICorner")
 LoadingCorner.CornerRadius = UDim.new(0, 12)
 LoadingCorner.Parent = LoadingFrame
 
-ImageLabel.Size = UDim2.new(1, 0, 1, 0)
-ImageLabel.Image = "rbxassetid://18423419357" 
-ImageLabel.ImageOpacity = 0.35
-ImageLabel.BackgroundTransparency = 1
-ImageLabel.ScaleType = Enum.ScaleType.Crop
-ImageLabel.Parent = LoadingFrame
-local ImageCorner = Instance.new("UICorner")
-ImageCorner.CornerRadius = UDim.new(0, 12)
-ImageCorner.Parent = ImageLabel
-
+-- Safe Text Rendering (Bypasses Image Freeze)
 Title.Size = UDim2.new(1, 0, 0, 45)
 Title.Position = UDim2.new(0, 0, 0.2, 0)
 Title.Text = "Welcome To Yarzy Bypasser V2"
 Title.TextColor3 = Color3.fromRGB(255, 255, 255)
 Title.Font = Enum.Font.FredokaOne
-Title.TextSize = 28
+Title.TextSize = 26
 Title.BackgroundTransparency = 1
+Title.ZIndex = 3
 Title.Parent = LoadingFrame
 
 Subtitle.Size = UDim2.new(1, 0, 0, 25)
@@ -83,22 +74,24 @@ Subtitle.TextColor3 = Color3.fromRGB(220, 220, 220)
 Subtitle.Font = Enum.Font.SourceSansItalic
 Subtitle.TextSize = 15
 Subtitle.BackgroundTransparency = 1
+Subtitle.ZIndex = 3
 Subtitle.Parent = LoadingFrame
 
--- Instagram Information Added Here
-InstaText.Size = UDim2.new(1, 0, 0, 30)
+InstaText.Size = UDim2.new(1, 0, 0, 40)
 InstaText.Position = UDim2.new(0, 0, 0.58, 0)
 InstaText.Text = "Instagram: Yarzyhikehde\n[ DM for Bypasser Code In Instagram ]"
-InstaText.TextColor3 = Color3.fromRGB(255, 50, 50) -- Glowing Red Look
+InstaText.TextColor3 = Color3.fromRGB(255, 80, 80)
 InstaText.Font = Enum.Font.SourceSansBold
 InstaText.TextSize = 14
 InstaText.BackgroundTransparency = 1
+InstaText.ZIndex = 3
 InstaText.Parent = LoadingFrame
 
 BarBackground.Size = UDim2.new(0, 340, 0, 8)
 BarBackground.Position = UDim2.new(0.5, -170, 0.8, 0)
 BarBackground.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 BarBackground.BorderSizePixel = 0
+BarBackground.ZIndex = 3
 BarBackground.Parent = LoadingFrame
 local BarBGCorner = Instance.new("UICorner")
 BarBGCorner.CornerRadius = UDim.new(0, 4)
@@ -107,13 +100,14 @@ BarBGCorner.Parent = BarBackground
 Bar.Size = UDim2.new(0, 0, 1, 0)
 Bar.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
 Bar.BorderSizePixel = 0
+Bar.ZIndex = 4
 Bar.Parent = BarBackground
 local BarCorner = Instance.new("UICorner")
 BarCorner.CornerRadius = UDim.new(0, 4)
 BarCorner.Parent = Bar
 
 ----------------------------------------------------
--- 2. MAIN INTERFACE (MUST V5 Design Layout Clone)
+-- 2. MAIN INTERFACE
 ----------------------------------------------------
 MainFrame.Name = "MainFrame"
 MainFrame.Size = UDim2.new(0, 260, 0, 310)
@@ -225,13 +219,8 @@ local VipCorner = Instance.new("UICorner")
 VipCorner.CornerRadius = UDim.new(0, 6)
 VipCorner.Parent = VipModeBtn
 
-local VipStroke = Instance.new("UIStroke")
-VipStroke.Color = Color3.fromRGB(255, 255, 255)
-VipStroke.Thickness = 1
-VipStroke.Parent = VipModeBtn
-
 ----------------------------------------------------
--- 3. VIP KEY SYSTEM POPUP FRAME
+-- 3. VIP KEY POPUP
 ----------------------------------------------------
 KeyFrame.Size = UDim2.new(0, 230, 0, 130)
 KeyFrame.Position = UDim2.new(0.5, -115, 0.4, -65)
@@ -283,7 +272,7 @@ KeyClose.Parent = KeyFrame
 KeyClose.MouseButton1Click:Connect(function() KeyFrame.Visible = false end)
 
 ----------------------------------------------------
--- 4. OP VIP MODE MENU INTERFACE
+-- 4. VIP FEATURES PANEL
 ----------------------------------------------------
 VipFrame.Size = UDim2.new(0, 250, 0, 280)
 VipFrame.Position = UDim2.new(0.5, -125, 0.5, -140)
@@ -348,27 +337,26 @@ for i, featText in ipairs(features) do
 end
 
 ----------------------------------------------------
--- 5. FUNCTIONALITY LOGIC
+-- 5. RUN TIME LOGIC
 ----------------------------------------------------
--- Loading Animation Trigger
-for i = 1, 100 do
-    task.wait(0.03)
-    Bar.Size = UDim2.new(i/100, 0, 1, 0)
-end
-LoadingFrame.Visible = false
-MainFrame.Visible = true
+-- High Priority UI Rendering & Loading Animation
+task.spawn(function()
+    for i = 1, 100 do
+        task.wait(0.02)
+        Bar.Size = UDim2.new(i/100, 0, 1, 0)
+    end
+    LoadingFrame.Visible = false
+    MainFrame.Visible = true
+end)
 
--- VIP Button Access Logic
 VipModeBtn.MouseButton1Click:Connect(function()
     if VipFrame.Visible == true then
         VipFrame.Visible = false
     else
-        -- Open Key Check Box First if not verified
         KeyFrame.Visible = true
     end
 end)
 
--- Key Verification System
 KeyVerifyBtn.MouseButton1Click:Connect(function()
     if KeyInput.Text == "YaRzYhIkEhdE" then
         KeyFrame.Visible = false
@@ -380,7 +368,6 @@ KeyVerifyBtn.MouseButton1Click:Connect(function()
     end
 end)
 
--- Chat Processing Actions
 local function BypassAndChat()
     local text = TextBox.Text
     if text ~= "" then
