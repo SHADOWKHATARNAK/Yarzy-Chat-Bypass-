@@ -1,16 +1,8 @@
 --[[
-    YARZY BYPASSER V2 (Fix Blank Screen Edition)
+    YARZY BYPASSER V2 (Instant Center Screen Edition)
 --]]
 
 local ScreenGui = Instance.new("ScreenGui")
-local LoadingFrame = Instance.new("Frame")
-local Title = Instance.new("TextLabel")
-local Subtitle = Instance.new("TextLabel")
-local InstaText = Instance.new("TextLabel")
-local BarBackground = Instance.new("Frame")
-local Bar = Instance.new("Frame")
-
--- Main UI Elements
 local MainFrame = Instance.new("Frame")
 local MainFrameUICorner = Instance.new("UICorner")
 local TopBar = Instance.new("TextLabel")
@@ -42,79 +34,15 @@ ScreenGui.Parent = game:GetService("CoreGui")
 ScreenGui.ResetOnSpawn = false
 
 ----------------------------------------------------
--- 1. LOADING INTERFACE (Safe & Text Guaranteed)
-----------------------------------------------------
-LoadingFrame.Name = "LoadingFrame"
-LoadingFrame.Size = UDim2.new(0, 420, 0, 270)
-LoadingFrame.Position = UDim2.new(0.5, -210, 0.5, -135)
-LoadingFrame.BackgroundColor3 = Color3.fromRGB(25, 10, 10) -- Semi-dark red safe background
-LoadingFrame.BorderSizePixel = 0
-LoadingFrame.ZIndex = 2
-LoadingFrame.Parent = ScreenGui
-
-local LoadingCorner = Instance.new("UICorner")
-LoadingCorner.CornerRadius = UDim.new(0, 12)
-LoadingCorner.Parent = LoadingFrame
-
--- Safe Text Rendering (Bypasses Image Freeze)
-Title.Size = UDim2.new(1, 0, 0, 45)
-Title.Position = UDim2.new(0, 0, 0.2, 0)
-Title.Text = "Welcome To Yarzy Bypasser V2"
-Title.TextColor3 = Color3.fromRGB(255, 255, 255)
-Title.Font = Enum.Font.FredokaOne
-Title.TextSize = 26
-Title.BackgroundTransparency = 1
-Title.ZIndex = 3
-Title.Parent = LoadingFrame
-
-Subtitle.Size = UDim2.new(1, 0, 0, 25)
-Subtitle.Position = UDim2.new(0, 0, 0.42, 0)
-Subtitle.Text = "SUPER LEGIT BYPASS IN SMART FONT"
-Subtitle.TextColor3 = Color3.fromRGB(220, 220, 220)
-Subtitle.Font = Enum.Font.SourceSansItalic
-Subtitle.TextSize = 15
-Subtitle.BackgroundTransparency = 1
-Subtitle.ZIndex = 3
-Subtitle.Parent = LoadingFrame
-
-InstaText.Size = UDim2.new(1, 0, 0, 40)
-InstaText.Position = UDim2.new(0, 0, 0.58, 0)
-InstaText.Text = "Instagram: Yarzyhikehde\n[ DM for Bypasser Code In Instagram ]"
-InstaText.TextColor3 = Color3.fromRGB(255, 80, 80)
-InstaText.Font = Enum.Font.SourceSansBold
-InstaText.TextSize = 14
-InstaText.BackgroundTransparency = 1
-InstaText.ZIndex = 3
-InstaText.Parent = LoadingFrame
-
-BarBackground.Size = UDim2.new(0, 340, 0, 8)
-BarBackground.Position = UDim2.new(0.5, -170, 0.8, 0)
-BarBackground.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-BarBackground.BorderSizePixel = 0
-BarBackground.ZIndex = 3
-BarBackground.Parent = LoadingFrame
-local BarBGCorner = Instance.new("UICorner")
-BarBGCorner.CornerRadius = UDim.new(0, 4)
-BarBGCorner.Parent = BarBackground
-
-Bar.Size = UDim2.new(0, 0, 1, 0)
-Bar.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-Bar.BorderSizePixel = 0
-Bar.ZIndex = 4
-Bar.Parent = BarBackground
-local BarCorner = Instance.new("UICorner")
-BarCorner.CornerRadius = UDim.new(0, 4)
-BarCorner.Parent = Bar
-
-----------------------------------------------------
--- 2. MAIN INTERFACE
+-- 1. MAIN INTERFACE (Direct Center Position Fix)
 ----------------------------------------------------
 MainFrame.Name = "MainFrame"
 MainFrame.Size = UDim2.new(0, 260, 0, 310)
-MainFrame.Position = UDim2.new(0.75, 0, 0.5, -155)
+-- Screen ke bilkul center me lane ke liye fixed position:
+MainFrame.Position = UDim2.new(0.5, -130, 0.5, -155)
 MainFrame.BackgroundColor3 = Color3.fromRGB(30, 0, 0)
 MainFrame.BorderSizePixel = 0
-MainFrame.Visible = false
+MainFrame.Visible = true -- Direct visible bina freeze ke
 MainFrame.Active = true
 MainFrame.Draggable = true
 MainFrame.Parent = ScreenGui
@@ -128,7 +56,7 @@ MainFrameUICorner.CornerRadius = UDim.new(0, 10)
 MainFrameUICorner.Parent = MainFrame
 
 TopBar.Size = UDim2.new(1, 0, 0, 35)
-TopBar.Text = "Yarzy Bypasser V2  _  "
+TopBar.Text = "Yarzy Bypasser V2"
 TopBar.TextColor3 = Color3.fromRGB(255, 255, 255)
 TopBar.BackgroundColor3 = Color3.fromRGB(50, 0, 0)
 TopBar.Font = Enum.Font.FredokaOne
@@ -220,7 +148,7 @@ VipCorner.CornerRadius = UDim.new(0, 6)
 VipCorner.Parent = VipModeBtn
 
 ----------------------------------------------------
--- 3. VIP KEY POPUP
+-- 2. VIP KEY POPUP
 ----------------------------------------------------
 KeyFrame.Size = UDim2.new(0, 230, 0, 130)
 KeyFrame.Position = UDim2.new(0.5, -115, 0.4, -65)
@@ -272,7 +200,7 @@ KeyClose.Parent = KeyFrame
 KeyClose.MouseButton1Click:Connect(function() KeyFrame.Visible = false end)
 
 ----------------------------------------------------
--- 4. VIP FEATURES PANEL
+-- 3. VIP FEATURES PANEL
 ----------------------------------------------------
 VipFrame.Size = UDim2.new(0, 250, 0, 280)
 VipFrame.Position = UDim2.new(0.5, -125, 0.5, -140)
@@ -337,18 +265,8 @@ for i, featText in ipairs(features) do
 end
 
 ----------------------------------------------------
--- 5. RUN TIME LOGIC
+-- 4. RUN TIME LOGIC
 ----------------------------------------------------
--- High Priority UI Rendering & Loading Animation
-task.spawn(function()
-    for i = 1, 100 do
-        task.wait(0.02)
-        Bar.Size = UDim2.new(i/100, 0, 1, 0)
-    end
-    LoadingFrame.Visible = false
-    MainFrame.Visible = true
-end)
-
 VipModeBtn.MouseButton1Click:Connect(function()
     if VipFrame.Visible == true then
         VipFrame.Visible = false
