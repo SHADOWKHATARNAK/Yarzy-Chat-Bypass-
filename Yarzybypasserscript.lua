@@ -1,7 +1,6 @@
 --[[
-    YARZY ADMIN & BYPASSER V2 (THE NO-PROBLEM FINAL EDITION)
-    Features: Full Flower BG, Red Confirm Button, Speed Safety Layer, Complete Admin System
-    Credits: Font Credit: Must
+    YARZY ADMIN & BYPASSER V2 (THE NO-BUG ABSOLUTE FINAL)
+    Credits: Font Credit: Must | Contact: yarzyhikehde on Instagram
 --]]
 
 local Players = game:GetService("Players")
@@ -13,91 +12,52 @@ ScreenGui.ResetOnSpawn = false
 
 -- Global States
 local scriptLocked = false
-local chatSpeed = 0.9 -- Default safe speed
-local currentTarget = "None"
+local chatSpeed = 0.9
 local currentMode = "Smart"
 local autoFixTags = false
 
 ----------------------------------------------------
 -- FONTS DICTIONARIES (BY MUST)
 ----------------------------------------------------
-local fontSmart = {
-    a = "ล", b = "lٌɔ", c = "c", d = "cٌlٌ", e = "e", f = "f", g = "ჭ",
-    h = "lา", i = "i", j = "j", k = "ƙּ", l = "l", m = "ıาา", n = "ıา",
-    o = "o", p = "p", q = "q", r = "ɽ", s = "ร", t = "ƚ", u = "ıɹ",
-    v = "v", w = "w", x = "x", y = "ყ", z = "z"
-}
-
-local fontHindi = {
-    a = "ล", b = "ҍ҉", c = "ƈ҉", d = "Ԁׁׁׅׅ҉", e = "ҿ҉", f = "ƒ҉", g = "ǥׁׁׅׅ",
-    h = "ԋ҉", i = "เ่", j = "ʝ҉", k = "ҟׁׅ҉", l = "ʅ҉", m = "ᴍ҉", n = "ιา",
-    o = "σ҉", p = "ρ҉", q = "ϙ҉", r = "ɾ҉", s = "ʂ҉", t = "ƚ҉", u = "ıɹ",
-    v = "ʋ҉", w = "ɯ҉", x = "Ӽ҉", y = "Ƴ҉", z = "ȥ҉"
-}
-
-local fontEnglish = {
-    a = "ล", b = "ҍ҉", c = "ςׁׅ", d = "Ԁׁׁׅׅ ", e = "ҿ҉", f = "ƒ҉", g = "ǥׁ",
-    h = "ԋ҉", i = "เ่", j = "ʝ҉", k = "ҟׁׅ", l = "ʅ҉", m = "ӎִׄ", n = "ιา",
-    o = "σ҉", p = "ƿׁׅ", q = "ϙ҉", r = "ɾ҉", s = "ऽ", t = "ƚ҉", u = "ıɹ",
-    v = "ʋ҉", w = "ɯ҉", x = "Ӽ҉", y = "ឫ", z = "ȥ҉"
-}
-
-local fontClear = {
-    a = "ล", b = "lٌɔ", c = "ჺ", d = "cٌlٌ", e = "e", f = "f", g = "ჭ",
-    h = "lา", i = "เ่", j = "ʝ", k = "ƙּ", l = "ɭ", m = "ıาา", n = "ıา",
-    o = "o", p = "p", q = "q", r = "ɽ", s = "န", t = "ƚ", u = "ıɹ",
-    v = "v", w = "ıɹɹ", x = "א", y = "ყ", z = "z"
-}
-
-local fontStylish = {
-    a = "ล", b = "lٌɔ", c = "ჺ", d = "cٌlٌ", e = "ㅌ", f = "Ŧ", g = "ჭ",
-    h = "lา", i = "เ่", j = "ʝ", k = "қ", l = "ʅ", m = "ıาา", n = "ıา",
-    o = "๏", p = "႞ↄ", q = "ϙ", r = "ɽ", s = "န", t = "ƚ", u = "ıɹ",
-    v = "√", w = "ıɹɹ", x = "א", y = "ყ", z = "z"
-}
-
-local fontBest = {
-    a = "ล", b = "ҍ", c = "ςׁׅ", d = "₫", e = "ҿ", f = "Ŧ", g = "ԍׁׁׅׅ",
-    h = "ң", i = "เ่", j = "ʝ", k = "ҟׁׅ", l = "l", m = "ӎִׄ", n = "ภ",
-    o = "๏", p = "ƿׁׅ", q = "ϙ", r = "ꞅׁׅ", s = "ร", t = "ƚ", u = "ıɹ",
-    v = "√", w = "ฬ", x = "א", y = "ឫ", z = "z"
-}
+local fontSmart = {a="ล", b="lٌɔ", c="c", d="cٌlٌ", e="e", f="f", g="ჭ", h="lา", i="i", j="j", k="ƙּ", l="l", m="ıาา", n="ıา", o="o", p="p", q="q", r="ɽ", s="ร", t="ƚ", u="ıɹ", v="v", w="w", x="x", y="ყ", z="z"}
+local fontHindi = {a="ล", b="ҍ҉", c="ƈ҉", d="Ԁׁׁׅׅ҉", e="ҿ҉", f="ƒ҉", g="ǥׁׁׅׅ", h="ԋ҉", i="เ่", j="ʝ҉", k="ҟׁׅ҉", l="ʅ҉", m="ᴍ҉", n="ιา", o="σ҉", p="ρ҉", q="ϙ҉", r="ɾ҉", s="ʂ҉", t="ƚ҉", u="ıɹ", v="ʋ҉", w="ɯ҉", x="Ӽ҉", y="Ƴ҉", z="ȥ҉"}
+local fontEnglish = {a="ล", b="ҍ҉", c="ςׁׅ", d="Ԁׁׁׅׅ ", e="ҿ҉", f="ƒ҉", g="ǥׁ", h="ԋ҉", i="เ่", j="ʝ҉", k="ҟׁׅ", l="ʅ҉", m="ӎִׄ", n="ιา", o="σ҉", p="ƿׁׅ", q="ϙ҉", r="ɾ҉", s="ऽ", t="ƚ҉", u="ıɹ", v="ʋ҉", w="ɯ҉", x="Ӽ҉", y="ឫ", z="ȥ҉"}
+local fontClear = {a="ล", b="lٌɔ", c="ჺ", d="cٌlٌ", e="e", f="f", g="ჭ", h="lา", i="เ่", j="ʝ", k="ƙּ", l="ɭ", m="ıาา", n="ıา", o="o", p="p", q="q", r="ɽ", s="န", t="ƚ", u="ıɹ", v="v", w="ıɹɹ", x="א", y="ყ", z="z"}
+local fontStylish = {a="ล", b="lٌɔ", c="ჺ", d="cٌlٌ", e="ㅌ", f="Ŧ", g="ჭ", h="lา", i="เ่", j="ʝ", k="қ", l="ʅ", m="ıาา", n="ıา", o="๏", p="႞ↄ", q="ϙ", r="ɽ", s="န", t="ƚ", u="ıɹ", v="√", w="ıɹɹ", x="א", y="ყ", z="z"}
+local fontBest = {a="ล", b="ҍ", c="ςׁׅ", d="₫", e="ҿ", f="Ŧ", g="ԍׁׁׅׅ", h="ң", i="เ่", j="ʝ", k="ҟׁׅ", l="l", m="ӎִׄ", n="ภ", o="๏", p="ƿׁׅ", q="ϙ", r="ꞅׁׅ", s="ร", t="ƚ", u="ıɹ", v="√", w="ฬ", x="א", y="ឫ", z="z"}
 
 ----------------------------------------------------
--- 1. STARTING KEY SYSTEM UI (FIXED WITH IMAGE & BUTTON)
+-- 1. STARTING KEY SYSTEM UI (FIXED LAYER & ZINDEX)
 ----------------------------------------------------
 local StartKeyFrame = Instance.new("Frame")
-local FlowerBG = Instance.new("ImageLabel")
-local KeyTitle = Instance.new("TextLabel")
-local KeyInput = Instance.new("TextBox")
-local ConfirmBtn = Instance.new("TextButton")
-
 StartKeyFrame.Name = "StartKeyFrame"
 StartKeyFrame.Size = UDim2.new(0, 420, 0, 270)
 StartKeyFrame.Position = UDim2.new(0.5, -210, 0.5, -135)
-StartKeyFrame.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+StartKeyFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 StartKeyFrame.BorderSizePixel = 0
 StartKeyFrame.Active = true
 StartKeyFrame.Draggable = true
-StartKeyFrame.Visible = true
+StartKeyFrame.ZIndex = 5
 StartKeyFrame.Parent = ScreenGui
 
 local StartCorner = Instance.new("UICorner")
 StartCorner.CornerRadius = UDim.new(0, 14)
 StartCorner.Parent = StartKeyFrame
 
--- Beautiful Flower Background from Image
+local FlowerBG = Instance.new("ImageLabel")
 FlowerBG.Name = "FlowerBG"
 FlowerBG.Size = UDim2.new(1, 0, 1, 0)
 FlowerBG.Image = "rbxassetid://18423419357"
 FlowerBG.ImageTransparency = 0.35
 FlowerBG.ScaleType = Enum.ScaleType.Crop
+FlowerBG.ZIndex = 5
 FlowerBG.Parent = StartKeyFrame
 
 local BGCorner = Instance.new("UICorner")
 BGCorner.CornerRadius = UDim.new(0, 14)
 BGCorner.Parent = FlowerBG
 
+local KeyTitle = Instance.new("TextLabel")
 KeyTitle.Size = UDim2.new(1, 0, 0, 45)
 KeyTitle.Position = UDim2.new(0, 0, 0.08, 0)
 KeyTitle.Text = "🔑 YARZY BYPASSER V2 🔑"
@@ -105,25 +65,26 @@ KeyTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
 KeyTitle.Font = Enum.Font.FredokaOne
 KeyTitle.TextSize = 22
 KeyTitle.BackgroundTransparency = 1
-KeyTitle.ZIndex = 2
+KeyTitle.ZIndex = 6
 KeyTitle.Parent = StartKeyFrame
 
+local KeyInput = Instance.new("TextBox")
 KeyInput.Size = UDim2.new(0, 310, 0, 42)
 KeyInput.Position = UDim2.new(0.5, -155, 0.42, -10)
 KeyInput.PlaceholderText = "Enter Secret Key Here..."
 KeyInput.Text = ""
 KeyInput.TextColor3 = Color3.fromRGB(255, 255, 255)
-KeyInput.BackgroundColor3 = Color3.fromRGB(40, 15, 15)
+KeyInput.BackgroundColor3 = Color3.fromRGB(45, 15, 15)
 KeyInput.Font = Enum.Font.SourceSansBold
 KeyInput.TextSize = 17
-KeyInput.ZIndex = 2
+KeyInput.ZIndex = 6
 KeyInput.Parent = StartKeyFrame
 
 local InCorner = Instance.new("UICorner")
 InCorner.CornerRadius = UDim.new(0, 8)
 InCorner.Parent = KeyInput
 
--- Confirm Button (Added Red Premium Look)
+local ConfirmBtn = Instance.new("TextButton")
 ConfirmBtn.Name = "ConfirmBtn"
 ConfirmBtn.Size = UDim2.new(0, 160, 0, 40)
 ConfirmBtn.Position = UDim2.new(0.5, -80, 0.72, 5)
@@ -132,7 +93,7 @@ ConfirmBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
 ConfirmBtn.BackgroundColor3 = Color3.fromRGB(180, 0, 0)
 ConfirmBtn.Font = Enum.Font.FredokaOne
 ConfirmBtn.TextSize = 18
-ConfirmBtn.ZIndex = 2
+ConfirmBtn.ZIndex = 6
 ConfirmBtn.Parent = StartKeyFrame
 
 local BtnCorner = Instance.new("UICorner")
@@ -140,51 +101,44 @@ BtnCorner.CornerRadius = UDim.new(0, 8)
 BtnCorner.Parent = ConfirmBtn
 
 ----------------------------------------------------
--- 2. MAIN BYPASSER INTERFACE & FONT CREDITS
+-- 2. MAIN INTERFACE & CREDITS LABELS
 ----------------------------------------------------
 local MainFrame = Instance.new("Frame")
-local MainFrameUICorner = Instance.new("UICorner")
-local TopBar = Instance.new("TextLabel")
-local CloseBtn = Instance.new("TextButton")
-local TextBox = Instance.new("TextBox")
-local SendBtn = Instance.new("TextButton")
-local ToggleMode = Instance.new("TextButton")
-
-local AutoBtn = Instance.new("TextButton")
-local FixTagzBtn = Instance.new("TextButton")
-local SupportBtn = Instance.new("TextButton")
-local VipModeBtn = Instance.new("TextButton")
-local CreditLabel = Instance.new("TextLabel")
-
 MainFrame.Name = "MainFrame"
-MainFrame.Size = UDim2.new(0, 260, 0, 315)
-MainFrame.Position = UDim2.new(0.5, -130, 0.5, -157)
+MainFrame.Size = UDim2.new(0, 270, 0, 330)
+MainFrame.Position = UDim2.new(0.5, -135, 0.5, -165)
 MainFrame.BackgroundColor3 = Color3.fromRGB(25, 0, 0)
 MainFrame.BorderSizePixel = 0
 MainFrame.Visible = false
 MainFrame.Active = true
 MainFrame.Draggable = true
+MainFrame.ZIndex = 1
 MainFrame.Parent = ScreenGui
+
+local MainFrameUICorner = Instance.new("UICorner")
+MainFrameUICorner.CornerRadius = UDim.new(0, 10)
+MainFrameUICorner.Parent = MainFrame
 
 local MainStroke = Instance.new("UIStroke")
 MainStroke.Color = Color3.fromRGB(200, 0, 0)
 MainStroke.Thickness = 2
 MainStroke.Parent = MainFrame
 
-MainFrameUICorner.CornerRadius = UDim.new(0, 10)
-MainFrameUICorner.Parent = MainFrame
-
+local TopBar = Instance.new("TextLabel")
 TopBar.Size = UDim2.new(1, 0, 0, 35)
 TopBar.Text = "Yarzy Bypasser V2"
 TopBar.TextColor3 = Color3.fromRGB(255, 255, 255)
 TopBar.BackgroundColor3 = Color3.fromRGB(45, 0, 0)
 TopBar.Font = Enum.Font.FredokaOne
 TopBar.TextSize = 16
+TopBar.ZIndex = 2
 TopBar.Parent = MainFrame
+
 local TopCorner = Instance.new("UICorner")
 TopCorner.CornerRadius = UDim.new(0, 10)
 TopCorner.Parent = TopBar
 
+local CloseBtn = Instance.new("TextButton")
 CloseBtn.Size = UDim2.new(0, 30, 0, 30)
 CloseBtn.Position = UDim2.new(1, -35, 0, 2)
 CloseBtn.Text = "X"
@@ -192,10 +146,15 @@ CloseBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
 CloseBtn.BackgroundColor3 = Color3.fromRGB(140, 0, 0)
 CloseBtn.Font = Enum.Font.SourceSansBold
 CloseBtn.TextSize = 16
+CloseBtn.ZIndex = 3
 CloseBtn.Parent = MainFrame
 CloseBtn.MouseButton1Click:Connect(function() ScreenGui:Destroy() end)
 
-TextBox.Size = UDim2.new(0, 240, 0, 35)
+local TextBox = Instance.new("TextBox")
+local SendBtn = Instance.new("TextButton")
+local ToggleMode = Instance.new("TextButton")
+
+TextBox.Size = UDim2.new(0, 250, 0, 35)
 TextBox.Position = UDim2.new(0, 10, 0, 45)
 TextBox.PlaceholderText = "Enter text here..."
 TextBox.Text = ""
@@ -203,45 +162,52 @@ TextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextBox.BackgroundColor3 = Color3.fromRGB(40, 10, 10)
 TextBox.Font = Enum.Font.SourceSans
 TextBox.TextSize = 16
+TextBox.ZIndex = 2
 TextBox.Parent = MainFrame
 
-SendBtn.Size = UDim2.new(0, 150, 0, 35)
+SendBtn.Size = UDim2.new(0, 160, 0, 35)
 SendBtn.Position = UDim2.new(0, 10, 0, 90)
 SendBtn.Text = "Send"
 SendBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
 SendBtn.BackgroundColor3 = Color3.fromRGB(160, 0, 0)
 SendBtn.Font = Enum.Font.SourceSansBold
 SendBtn.TextSize = 16
+SendBtn.ZIndex = 2
 SendBtn.Parent = MainFrame
 
 ToggleMode.Size = UDim2.new(0, 80, 0, 35)
-ToggleMode.Position = UDim2.new(0, 170, 0, 90)
+ToggleMode.Position = UDim2.new(0, 180, 0, 90)
 ToggleMode.Text = "Smart v"
 ToggleMode.TextColor3 = Color3.fromRGB(255, 255, 255)
 ToggleMode.BackgroundColor3 = Color3.fromRGB(45, 10, 10)
 ToggleMode.Font = Enum.Font.SourceSansBold
 ToggleMode.TextSize = 13
+ToggleMode.ZIndex = 2
 ToggleMode.Parent = MainFrame
 
 local modesList = {"Smart", "Hindi", "English", "Clear", "Stylish", "Best"}
 ToggleMode.MouseButton1Click:Connect(function()
     local idx = 1
-    for i, v in ipairs(modesList) do
-        if v == currentMode then idx = i break end
-    end
+    for i, v in ipairs(modesList) do if v == currentMode then idx = i break end end
     idx = idx % #modesList + 1
     currentMode = modesList[idx]
     ToggleMode.Text = currentMode .. " v"
 end)
 
+local AutoBtn = Instance.new("TextButton")
+local FixTagzBtn = Instance.new("TextButton")
+local SupportBtn = Instance.new("TextButton")
+local VipModeBtn = Instance.new("TextButton")
+
 local function createButton(btn, text, pos)
-    btn.Size = UDim2.new(0, 115, 0, 32)
+    btn.Size = UDim2.new(0, 120, 0, 32)
     btn.Position = pos
     btn.Text = text
     btn.TextColor3 = Color3.fromRGB(255, 255, 255)
     btn.BackgroundColor3 = Color3.fromRGB(50, 10, 10)
     btn.Font = Enum.Font.FredokaOne
     btn.TextSize = 14
+    btn.ZIndex = 2
     btn.Parent = MainFrame
     local bCorner = Instance.new("UICorner")
     bCorner.CornerRadius = UDim.new(0, 6)
@@ -249,7 +215,7 @@ local function createButton(btn, text, pos)
 end
 
 createButton(AutoBtn, "AUTO: OFF", UDim2.new(0, 10, 0, 135))
-createButton(FixTagzBtn, "FIX TAGZ", UDim2.new(0, 135, 0, 135))
+createButton(FixTagzBtn, "FIX TAGZ", UDim2.new(0, 140, 0, 135))
 createButton(SupportBtn, "Support", UDim2.new(0, 10, 0, 175))
 
 AutoBtn.MouseButton1Click:Connect(function()
@@ -258,38 +224,49 @@ AutoBtn.MouseButton1Click:Connect(function()
     AutoBtn.BackgroundColor3 = autoFixTags and Color3.fromRGB(0, 120, 0) or Color3.fromRGB(50, 10, 10)
 end)
 
-FixTagzBtn.MouseButton1Click:Connect(function()
-    TextBox.Text = TextBox.Text .. "ajxjvnsiwurmxncncj"
-end)
-
+FixTagzBtn.MouseButton1Click:Connect(function() TextBox.Text = TextBox.Text .. "ajxjvnsiwurmxncncj" end)
 SupportBtn.MouseButton1Click:Connect(function()
     toclipboard("https://github.com/SHADOWKHATARNAK")
     SupportBtn.Text = "Copied Link!"
-    task.wait(2)
+    task.wait(1.5)
     SupportBtn.Text = "Support"
 end)
 
-VipModeBtn.Size = UDim2.new(0, 240, 0, 35)
+VipModeBtn.Size = UDim2.new(0, 250, 0, 35)
 VipModeBtn.Position = UDim2.new(0, 10, 0, 220)
 VipModeBtn.Text = "👑 VIP UNLOCKED 👑"
 VipModeBtn.TextColor3 = Color3.fromRGB(255, 215, 0)
 VipModeBtn.BackgroundColor3 = Color3.fromRGB(100, 0, 0)
 VipModeBtn.Font = Enum.Font.FredokaOne
 VipModeBtn.TextSize = 16
+VipModeBtn.ZIndex = 2
 VipModeBtn.Parent = MainFrame
 
--- Exact Font Credit requested position
-CreditLabel.Size = UDim2.new(1, 0, 0, 25)
-CreditLabel.Position = UDim2.new(0, 0, 1, -26)
+-- Exact Text Labels Configured at Bottom
+local CreditLabel = Instance.new("TextLabel")
+CreditLabel.Size = UDim2.new(1, 0, 0, 20)
+CreditLabel.Position = UDim2.new(0, 0, 1, -45)
 CreditLabel.Text = "Font Credit: Must"
-CreditLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
-CreditLabel.Font = Enum.Font.SourceSansBoldItalic
+CreditLabel.TextColor3 = Color3.fromRGB(220, 220, 220)
+CreditLabel.Font = Enum.Font.SourceSansBold
 CreditLabel.TextSize = 14
 CreditLabel.BackgroundTransparency = 1
+CreditLabel.ZIndex = 2
 CreditLabel.Parent = MainFrame
 
+local ContactLabel = Instance.new("TextLabel")
+ContactLabel.Size = UDim2.new(1, 0, 0, 20)
+ContactLabel.Position = UDim2.new(0, 0, 1, -25)
+ContactLabel.Text = "Contact: yarzyhikehde on Instagram"
+ContactLabel.TextColor3 = Color3.fromRGB(255, 100, 100)
+ContactLabel.Font = Enum.Font.SourceSansItalic
+ContactLabel.TextSize = 13
+ContactLabel.BackgroundTransparency = 1
+ContactLabel.ZIndex = 2
+ContactLabel.Parent = MainFrame
+
 ----------------------------------------------------
--- 3. INTERACTION LOGIC & SECURE CHAT ENGINE
+-- 3. INTERACTION LOGIC & CHAT EXECUTION
 ----------------------------------------------------
 local function SendChat(msg)
     local TextChatService = game:GetService("TextChatService")
@@ -304,14 +281,14 @@ local function SendChat(msg)
     end
 end
 
--- Fixed Key Verification via Confirm Button
+-- Completely Working Key Trigger Action Hook
 ConfirmBtn.MouseButton1Click:Connect(function()
-    if KeyInput.Text == "YaRzYhIkEhdE" and not scriptLocked then
+    if KeyInput.Text == "YaRzYhIkEhdE" then
         StartKeyFrame.Visible = false
         MainFrame.Visible = true
     else
         KeyInput.Text = ""
-        KeyInput.PlaceholderText = "Invalid Key! Try Again."
+        KeyInput.PlaceholderText = "Wrong Key! Try Again."
     end
 end)
 
@@ -337,9 +314,7 @@ local function ProcessAndSend()
         end
     end
     
-    if autoFixTags then
-        bypassedText = bypassedText .. "ajxjvnsiwurmxncncj"
-    end
+    if autoFixTags then bypassedText = bypassedText .. "ajxjvnsiwurmxncncj" end
     
     task.wait(chatSpeed)
     SendChat(bypassedText)
@@ -350,27 +325,13 @@ SendBtn.MouseButton1Click:Connect(ProcessAndSend)
 TextBox.FocusLost:Connect(function(ep) if ep then ProcessAndSend() end end)
 
 ----------------------------------------------------
--- 4. MASTER ADMIN BACKEND AND SPEED PROTECTION LOOP
+-- 4. MASTER ADMIN BACKEND AND SPEED PROTECTION
 ----------------------------------------------------
 local function HandleCommand(msg, speaker)
     local args = string.split(msg, " ")
     local cmd = args[1]:lower()
 
-    if cmd == "!target" then
-        currentTarget = args[2] or "None"
-        SendChat("Target Locked: " .. currentTarget)
-    elseif cmd == "!who" and args[2] == "owner" then
-        SendChat("Yarzy Abbu")
-    elseif cmd == "!who" and args[2] == "admin" then
-        SendChat("Admin: None")
-    elseif cmd == "!say" then
-        table.remove(args, 1)
-        SendChat(table.concat(args, " "))
-    elseif cmd == "!start" and args[2] == "spam" then
-        SendChat("Ok Boss Start I'll Start Spamming After 10 Seconds")
-    elseif cmd == "!hi" then
-        SendChat("Hi " .. localPlayer.Name)
-    elseif cmd == "!speed" then
+    if cmd == "!speed" then
         local targetSpeed = tonumber(args[2])
         if targetSpeed then
             if targetSpeed < 0.9 then
@@ -383,27 +344,27 @@ local function HandleCommand(msg, speaker)
         else
             chatSpeed = 0.9
         end
+    elseif cmd == "!who" and args[2] == "owner" then
+        SendChat("Yarzy Abbu")
+    elseif cmd == "!who" and args[2] == "admin" then
+        SendChat("Admin: None")
+    elseif cmd == "!say" then
+        table.remove(args, 1)
+        SendChat(table.concat(args, " "))
+    elseif cmd == "!start" and args[2] == "spam" then
+        SendChat("Ok Boss Start I'll Start Spamming After 10 Seconds")
+    elseif cmd == "!hi" then
+        SendChat("Hi " .. localPlayer.Name)
     elseif cmd == "!byoff" then
         ScreenGui:Destroy()
     elseif cmd == "!bylock" then
-        scriptLocked = true
-        MainFrame.Visible = false
-        StartKeyFrame.Visible = false
-    elseif cmd == "!byunlock" then
-        scriptLocked = false
-        MainFrame.Visible = true
-    elseif cmd == "!byon" then
-        scriptLocked = false
-        MainFrame.Visible = true
+        scriptLocked = true MainFrame.Visible = false StartKeyFrame.Visible = false
+    elseif cmd == "!byunlock" or cmd == "!byon" then
+        scriptLocked = false MainFrame.Visible = true
     elseif cmd == "!ban" then
         localPlayer:Kick("You have been banned by Yarzy Admin System.")
     end
 end
 
--- Listening connections
-Players.PlayerAdded:Connect(function(plr)
-    plr.Chatted:Connect(function(msg) HandleCommand(msg, plr) end)
-end)
-for _, plr in ipairs(Players:GetPlayers()) do
-    plr.Chatted:Connect(function(msg) HandleCommand(msg, plr) end)
-end
+Players.PlayerAdded:Connect(function(plr) plr.Chatted:Connect(function(msg) HandleCommand(msg, plr) end) end)
+for _, plr in ipairs(Players:GetPlayers()) do plr.Chatted:Connect(function(msg) HandleCommand(msg, plr) end) end
