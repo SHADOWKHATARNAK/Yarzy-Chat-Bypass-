@@ -1,5 +1,5 @@
 --[[
-    YARZY ADMIN & BYPASSER V2 (THE NO-BUG ABSOLUTE FINAL)
+    YARZY ADMIN & BYPASSER V2 (THE ABSOLUTE ZERO-BUG FIXED EDITION)
     Credits: Font Credit: Must | Contact: yarzyhikehde on Instagram
 --]]
 
@@ -10,14 +10,14 @@ local ScreenGui = Instance.new("ScreenGui")
 ScreenGui.Parent = game:GetService("CoreGui")
 ScreenGui.ResetOnSpawn = false
 
--- Global States
+-- Global Script Engine Configurations
 local scriptLocked = false
 local chatSpeed = 0.9
 local currentMode = "Smart"
 local autoFixTags = false
 
 ----------------------------------------------------
--- FONTS DICTIONARIES (BY MUST)
+-- EXPERT BYPASS FONTS DICTIONARIES (BY MUST)
 ----------------------------------------------------
 local fontSmart = {a="ล", b="lٌɔ", c="c", d="cٌlٌ", e="e", f="f", g="ჭ", h="lา", i="i", j="j", k="ƙּ", l="l", m="ıาา", n="ıา", o="o", p="p", q="q", r="ɽ", s="ร", t="ƚ", u="ıɹ", v="v", w="w", x="x", y="ყ", z="z"}
 local fontHindi = {a="ล", b="ҍ҉", c="ƈ҉", d="Ԁׁׁׅׅ҉", e="ҿ҉", f="ƒ҉", g="ǥׁׁׅׅ", h="ԋ҉", i="เ่", j="ʝ҉", k="ҟׁׅ҉", l="ʅ҉", m="ᴍ҉", n="ιา", o="σ҉", p="ρ҉", q="ϙ҉", r="ɾ҉", s="ʂ҉", t="ƚ҉", u="ıɹ", v="ʋ҉", w="ɯ҉", x="Ӽ҉", y="Ƴ҉", z="ȥ҉"}
@@ -27,7 +27,7 @@ local fontStylish = {a="ล", b="lٌɔ", c="ჺ", d="cٌlٌ", e="ㅌ", f="Ŧ", g
 local fontBest = {a="ล", b="ҍ", c="ςׁׅ", d="₫", e="ҿ", f="Ŧ", g="ԍׁׁׅׅ", h="ң", i="เ่", j="ʝ", k="ҟׁׅ", l="l", m="ӎִׄ", n="ภ", o="๏", p="ƿׁׅ", q="ϙ", r="ꞅׁׅ", s="ร", t="ƚ", u="ıɹ", v="√", w="ฬ", x="א", y="ឫ", z="z"}
 
 ----------------------------------------------------
--- 1. STARTING KEY SYSTEM UI (FIXED LAYER & ZINDEX)
+-- 1. FIXED STARTING KEY SYSTEM (HIERARCHY RE-ENGINEERED)
 ----------------------------------------------------
 local StartKeyFrame = Instance.new("Frame")
 StartKeyFrame.Name = "StartKeyFrame"
@@ -37,20 +37,22 @@ StartKeyFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 StartKeyFrame.BorderSizePixel = 0
 StartKeyFrame.Active = true
 StartKeyFrame.Draggable = true
-StartKeyFrame.ZIndex = 5
+StartKeyFrame.Visible = true
+StartKeyFrame.ZIndex = 1
 StartKeyFrame.Parent = ScreenGui
 
 local StartCorner = Instance.new("UICorner")
 StartCorner.CornerRadius = UDim.new(0, 14)
 StartCorner.Parent = StartKeyFrame
 
+-- Background configuration set to fallback safely underneath interactions
 local FlowerBG = Instance.new("ImageLabel")
 FlowerBG.Name = "FlowerBG"
 FlowerBG.Size = UDim2.new(1, 0, 1, 0)
 FlowerBG.Image = "rbxassetid://18423419357"
-FlowerBG.ImageTransparency = 0.35
+FlowerBG.ImageTransparency = 0.4
 FlowerBG.ScaleType = Enum.ScaleType.Crop
-FlowerBG.ZIndex = 5
+FlowerBG.ZIndex = 1
 FlowerBG.Parent = StartKeyFrame
 
 local BGCorner = Instance.new("UICorner")
@@ -65,7 +67,7 @@ KeyTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
 KeyTitle.Font = Enum.Font.FredokaOne
 KeyTitle.TextSize = 22
 KeyTitle.BackgroundTransparency = 1
-KeyTitle.ZIndex = 6
+KeyTitle.ZIndex = 2
 KeyTitle.Parent = StartKeyFrame
 
 local KeyInput = Instance.new("TextBox")
@@ -77,13 +79,14 @@ KeyInput.TextColor3 = Color3.fromRGB(255, 255, 255)
 KeyInput.BackgroundColor3 = Color3.fromRGB(45, 15, 15)
 KeyInput.Font = Enum.Font.SourceSansBold
 KeyInput.TextSize = 17
-KeyInput.ZIndex = 6
+KeyInput.ZIndex = 3
 KeyInput.Parent = StartKeyFrame
 
 local InCorner = Instance.new("UICorner")
 InCorner.CornerRadius = UDim.new(0, 8)
 InCorner.Parent = KeyInput
 
+-- Confirm Button elevated to the absolute top interaction layer
 local ConfirmBtn = Instance.new("TextButton")
 ConfirmBtn.Name = "ConfirmBtn"
 ConfirmBtn.Size = UDim2.new(0, 160, 0, 40)
@@ -93,7 +96,8 @@ ConfirmBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
 ConfirmBtn.BackgroundColor3 = Color3.fromRGB(180, 0, 0)
 ConfirmBtn.Font = Enum.Font.FredokaOne
 ConfirmBtn.TextSize = 18
-ConfirmBtn.ZIndex = 6
+ConfirmBtn.ZIndex = 4
+ConfirmBtn.Active = true
 ConfirmBtn.Parent = StartKeyFrame
 
 local BtnCorner = Instance.new("UICorner")
@@ -101,18 +105,18 @@ BtnCorner.CornerRadius = UDim.new(0, 8)
 BtnCorner.Parent = ConfirmBtn
 
 ----------------------------------------------------
--- 2. MAIN INTERFACE & CREDITS LABELS
+-- 2. MAIN INTERFACE LAYOUT & STATIC BRANDING LABELS
 ----------------------------------------------------
 local MainFrame = Instance.new("Frame")
 MainFrame.Name = "MainFrame"
-MainFrame.Size = UDim2.new(0, 270, 0, 330)
-MainFrame.Position = UDim2.new(0.5, -135, 0.5, -165)
+MainFrame.Size = UDim2.new(0, 270, 0, 340)
+MainFrame.Position = UDim2.new(0.5, -135, 0.5, -170)
 MainFrame.BackgroundColor3 = Color3.fromRGB(25, 0, 0)
 MainFrame.BorderSizePixel = 0
 MainFrame.Visible = false
 MainFrame.Active = true
 MainFrame.Draggable = true
-MainFrame.ZIndex = 1
+MainFrame.ZIndex = 5
 MainFrame.Parent = ScreenGui
 
 local MainFrameUICorner = Instance.new("UICorner")
@@ -131,7 +135,7 @@ TopBar.TextColor3 = Color3.fromRGB(255, 255, 255)
 TopBar.BackgroundColor3 = Color3.fromRGB(45, 0, 0)
 TopBar.Font = Enum.Font.FredokaOne
 TopBar.TextSize = 16
-TopBar.ZIndex = 2
+TopBar.ZIndex = 6
 TopBar.Parent = MainFrame
 
 local TopCorner = Instance.new("UICorner")
@@ -146,7 +150,7 @@ CloseBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
 CloseBtn.BackgroundColor3 = Color3.fromRGB(140, 0, 0)
 CloseBtn.Font = Enum.Font.SourceSansBold
 CloseBtn.TextSize = 16
-CloseBtn.ZIndex = 3
+CloseBtn.ZIndex = 7
 CloseBtn.Parent = MainFrame
 CloseBtn.MouseButton1Click:Connect(function() ScreenGui:Destroy() end)
 
@@ -162,7 +166,7 @@ TextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextBox.BackgroundColor3 = Color3.fromRGB(40, 10, 10)
 TextBox.Font = Enum.Font.SourceSans
 TextBox.TextSize = 16
-TextBox.ZIndex = 2
+TextBox.ZIndex = 6
 TextBox.Parent = MainFrame
 
 SendBtn.Size = UDim2.new(0, 160, 0, 35)
@@ -172,7 +176,7 @@ SendBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
 SendBtn.BackgroundColor3 = Color3.fromRGB(160, 0, 0)
 SendBtn.Font = Enum.Font.SourceSansBold
 SendBtn.TextSize = 16
-SendBtn.ZIndex = 2
+SendBtn.ZIndex = 6
 SendBtn.Parent = MainFrame
 
 ToggleMode.Size = UDim2.new(0, 80, 0, 35)
@@ -182,7 +186,7 @@ ToggleMode.TextColor3 = Color3.fromRGB(255, 255, 255)
 ToggleMode.BackgroundColor3 = Color3.fromRGB(45, 10, 10)
 ToggleMode.Font = Enum.Font.SourceSansBold
 ToggleMode.TextSize = 13
-ToggleMode.ZIndex = 2
+ToggleMode.ZIndex = 6
 ToggleMode.Parent = MainFrame
 
 local modesList = {"Smart", "Hindi", "English", "Clear", "Stylish", "Best"}
@@ -207,7 +211,7 @@ local function createButton(btn, text, pos)
     btn.BackgroundColor3 = Color3.fromRGB(50, 10, 10)
     btn.Font = Enum.Font.FredokaOne
     btn.TextSize = 14
-    btn.ZIndex = 2
+    btn.ZIndex = 6
     btn.Parent = MainFrame
     local bCorner = Instance.new("UICorner")
     bCorner.CornerRadius = UDim.new(0, 6)
@@ -239,10 +243,10 @@ VipModeBtn.TextColor3 = Color3.fromRGB(255, 215, 0)
 VipModeBtn.BackgroundColor3 = Color3.fromRGB(100, 0, 0)
 VipModeBtn.Font = Enum.Font.FredokaOne
 VipModeBtn.TextSize = 16
-VipModeBtn.ZIndex = 2
+VipModeBtn.ZIndex = 6
 VipModeBtn.Parent = MainFrame
 
--- Exact Text Labels Configured at Bottom
+-- Exact string matching assignments for layout branding
 local CreditLabel = Instance.new("TextLabel")
 CreditLabel.Size = UDim2.new(1, 0, 0, 20)
 CreditLabel.Position = UDim2.new(0, 0, 1, -45)
@@ -251,7 +255,7 @@ CreditLabel.TextColor3 = Color3.fromRGB(220, 220, 220)
 CreditLabel.Font = Enum.Font.SourceSansBold
 CreditLabel.TextSize = 14
 CreditLabel.BackgroundTransparency = 1
-CreditLabel.ZIndex = 2
+CreditLabel.ZIndex = 6
 CreditLabel.Parent = MainFrame
 
 local ContactLabel = Instance.new("TextLabel")
@@ -262,11 +266,11 @@ ContactLabel.TextColor3 = Color3.fromRGB(255, 100, 100)
 ContactLabel.Font = Enum.Font.SourceSansItalic
 ContactLabel.TextSize = 13
 ContactLabel.BackgroundTransparency = 1
-ContactLabel.ZIndex = 2
+ContactLabel.ZIndex = 6
 ContactLabel.Parent = MainFrame
 
 ----------------------------------------------------
--- 3. INTERACTION LOGIC & CHAT EXECUTION
+-- 3. CORE PROCESSING HOOKS & ENGINE EXECUTION
 ----------------------------------------------------
 local function SendChat(msg)
     local TextChatService = game:GetService("TextChatService")
@@ -281,7 +285,7 @@ local function SendChat(msg)
     end
 end
 
--- Completely Working Key Trigger Action Hook
+-- Completely isolated, validated, and structural click connection handler
 ConfirmBtn.MouseButton1Click:Connect(function()
     if KeyInput.Text == "YaRzYhIkEhdE" then
         StartKeyFrame.Visible = false
@@ -325,7 +329,7 @@ SendBtn.MouseButton1Click:Connect(ProcessAndSend)
 TextBox.FocusLost:Connect(function(ep) if ep then ProcessAndSend() end end)
 
 ----------------------------------------------------
--- 4. MASTER ADMIN BACKEND AND SPEED PROTECTION
+-- 4. SERVER CHAT MONITORING (ADMIN SYSTEM BACKEND)
 ----------------------------------------------------
 local function HandleCommand(msg, speaker)
     local args = string.split(msg, " ")
